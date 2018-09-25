@@ -3,7 +3,6 @@
 public class Tujuans : MonoBehaviour {
 
     public static Transform[] points;
-
     private void Awake()
     {
         points = new Transform[transform.childCount];
@@ -12,4 +11,6 @@ public class Tujuans : MonoBehaviour {
             points [i] = transform.GetChild(i);
         }
     }
+    
+    
 }

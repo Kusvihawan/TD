@@ -16,6 +16,23 @@ public class Enemy : MonoBehaviour {
     private void Update()
     {
         Vector3 dir = target.position - transform.position;
-        transform.Translate();
+        transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
+
+        if (Vector3.Distance(transform.position, target.position)<= 0.2f)
+        {
+            GetNextPoint();
+        }
+    }
+
+    void GetNextPoint()
+    {
+        if (wavepointsIndex >= Tujuans.points.Length - 1)
+        {
+            CoreHealth.health--;
+            Destroy(gameObject);
+            return;
+        }
+        wavepointsIndex++;
+        target = Tujuans.points[wavepointsIndex];
     }
 }
